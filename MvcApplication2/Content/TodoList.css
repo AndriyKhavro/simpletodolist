@@ -1,0 +1,238 @@
+body
+{
+    color: #333;
+    font-family: "helvetica",verdana, arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    background: url(/Images/bg.png) repeat;
+    background-attachment: fixed;
+    background-position: right bottom;
+    max-width: 980px; /*Remove this to make it full screen*/
+    margin: 1em auto;
+}
+
+p, ol, ul, td
+{
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    margin: 0;
+}
+
+/*a
+{
+    color: #000;
+}
+
+    a :visited
+    {
+        color: #666;
+    }
+
+    a :hover
+    {
+        color: #fff;
+    }*/
+
+
+.project
+{
+    background-color: #fff;
+    margin-bottom: 40px;
+    border: 1px solid #847335;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+.btn-addproject
+{
+    background: url("/Images/addproject.png") no-repeat scroll 0 0 transparent;
+    padding: 0px 0px 48px 211px;
+    border: none;
+}
+
+
+.title
+{
+    margin: 0 auto;
+    width: 338px;
+}
+
+.addproject
+{
+    width: 450px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+input[type="text"]
+{
+    height: 35px;
+}
+
+.projtitle
+{
+    height: 52px;
+    background: url("/Images/projtitlebg.png") repeat-x scroll 0 0 transparent;
+}
+
+.titleofproject
+{
+    float: left;
+    padding: 5px;
+    height: 50px;
+    color: white;
+    font-size: 16px;
+}
+
+.linksforproject
+{
+    float: right;
+    margin-top: 23px;
+}
+
+
+.projnote
+{
+    float: left;
+    background: url("/Images/projnote.png") no-repeat;
+    margin-top: 15px;
+    margin-left: 15px;
+    padding: 22px;
+}
+
+.projdestry
+{
+    background: url("/Images/projdelete.png") no-repeat;
+    margin-right: 15px;
+    display: inline-block;
+    height: 27px;
+    width: 19px;
+}
+
+.projedit
+{
+    background: url("/Images/projedit.png") no-repeat;
+    margin-right: 15px;
+    display: inline-block;
+    height: 27px;
+    width: 19px;
+}
+
+.form-tasks
+{
+    background-color: #cfcfcf;
+    background-image: url("/Images/addtask.png");
+    background-repeat: no-repeat;
+    background-position: 17px 14px;
+    height: 50px;
+    margin-top: 0px;
+    padding: 10px 25px 0px 62px;
+}
+
+form
+{
+    margin: 0px;
+}
+
+.tasktable
+{
+    width: 100%;
+}
+
+.newTodo
+{
+    float:left;
+    width: 750px;
+    padding: 0 10px;
+}
+
+.btn-tasks
+{
+    background: url("/Images/addtasks.png") no-repeat;
+    padding: 0 0 30px 108px;
+    border: none;
+    float: right;
+    width: 108px;
+}
+
+.taskdestroy
+{
+    background: url("/Images/taskdelete.png") no-repeat;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+.taskedit
+{
+    background: url("/Images/taskedit.png") no-repeat;
+    display: inline-block;
+    height: 21px;
+    width: 21px;
+}
+
+.taskmove
+{
+    display: inline-block;
+}
+
+.taskup
+{
+    background: url("/Images/taskup.png") no-repeat;
+    height: 13px;
+    width: 22px;
+    display: block;
+}
+
+.taskdown
+{
+    background: url("/Images/taskdown.png") no-repeat;
+    height: 13px;
+    width: 22px;
+    display: block;
+}
+
+.linksfortask
+{   
+    width: 10%;
+}
+
+.taskdone
+{
+    width: 50px;
+}
+
+.tasktitle
+{
+    width: 675px;
+}
+
+.tasktitle .done
+{
+    text-decoration: line-through;
+}
+
+.projectslist table
+{
+   border-left: 1px solid #cfcfcf;
+   border-top: 1px solid #cfcfcf;
+}
+
+.projectslist td
+{
+   border-right: 1px solid #cfcfcf;
+   border-bottom: 1px solid #cfcfcf;
+}
+
+
+.taskrow :hover
+{
+    background-color: lightyellow;
+    
+}

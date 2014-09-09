@@ -1,0 +1,96 @@
+﻿@model MvcApplication2.Models.LoginModel
+@{
+    ViewBag.Title = "SIMPLE TODO LIST";
+}
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<header>
+    <h1>@ViewBag.Title</h1>
+</header>
+
+<div id="main-content">
+    @if (@User.Identity.IsAuthenticated)
+    {
+        <p class="error" data-bind="text: error"></p>
+        <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+        <div class="projectslist" data-bind="foreach: todoLists, visible: todoLists().length > 0">
+            <div class="project">
+                <div class="projtitle" data-bind="event: { mouseover: showLinks, mouseout: hideLinks }">
+                    <div class="projnote"></div>
+
+                    <div class="titleofproject">
+                        <div data-bind="text: title, visible: !isEditingListTitle()"></div>
+                        <input type="text" data-bind="value: title, visible: isEditingListTitle, hasfocus: isEditingListTitle, blurOnEnter: true, event: { blur: endEdit }" />
+                    </div>
+
+                    <div class="linksforproject" data-bind="visible: isHovered">
+                        <a href="#" class="projedit" data-bind="click: beginEdit"></a>
+                        <a href="#" class="projdestry" data-bind="click: $parent.deleteTodoList"></a>
+                    </div>
+                </div>
+                <div class="form-tasks">
+                    <input class="newTodo" type="text" data-bind="value: newTodoTitle, placeholder: 'Start typing here to create a task...', event: { keyup: addTodoOnEnter }" />
+                    <button class="btn-tasks" data-bind="click: addTodo"></button>
+                </div>
+                <table class="tasktable" data-bind="visible: todos().length > 0">
+                    <tbody class="taskrow" data-bind="foreach: todos">
+                        <tr data-bind="event: { mouseover: showLinks, mouseout: hideLinks }">
+                            <td class="taskdone">
+                                <input type="checkbox" data-bind="checked: isDone" /></td>
+                            <td class="taskdeadline">
+                                <input type="date" data-bind="value: deadline, enable: !isDone()"></td>
+                            <td class="tasktitle">
+                                <div data-bind="text: title, visible: !isEditingTitle(), attr: { class: isDone() ? 'done' : 'todo' }"></div>
+                                <input type="text" data-bind="value: title, visible: isEditingTitle, hasfocus: isEditingTitle, blurOnEnter: true, event: { blur: endEdit }" />
+                            </td>
+                            <td class="linksfortask">
+                                <div data-bind="visible: isHovered">
+                                    <div class="taskmove">
+                                        <a href="#" class="taskup" data-bind="click: $parent.moveUpTodo"></a>
+                                        <a href="#" class="taskdown" data-bind="click: $parent.moveDownTodo"></a>
+                                    </div>
+                                    <a href="#" class="taskedit" data-bind="click: beginEdit"></a>
+                                    <a href="#" class="taskdestroy" data-bind="click: $parent.deleteTodo"></a>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <button class="btn-addproject" data-bind="click: addTodoList"></button>
+    }
+    else
+    {
+        <div class="todoList" id="loginPanel">
+            <section id="localLoginPanel">
+                <h2>Log in</h2>
+                @Html.Partial("_Login")
+            </section>
+            <p>First time here? <a id="showRegister">Sign up</a></p>
+        </div>
+        <div class="todoList" id="registerPanel">
+            <h2>Sign up</h2>
+            @Html.Partial("_Register")
+            <p>Already signed up? <a id="showLogin">Log in</a></p>
+        </div>
+    }
+</div>
+
+@if (@User.Identity.IsAuthenticated)
+{
+    @section scripts {
+        @Scripts.Render("~/bundles/knockout")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/todo")
+    }
+}
